@@ -33,13 +33,13 @@ para ordenar los módulos, no para medir cuánto probar.
 
 | Módulo | Impacto (1-5) | Probabilidad (1-5) | Riesgo | ¿Por qué? |
 |---|---|---|---|---|
-| Autenticación y tokens | | | | |
-| Registro de entrenamientos | | | | |
-| Base de datos de ejercicios | | | | |
-| Plantillas de entrenamiento | | | | |
-| Panel de administración | | | | |
-| Historial y estadísticas | | | | |
-| Interfaz responsive | | | | |
+| Autenticación y tokens |5 |3 |15 |La seguridad es clave |
+| Registro de entrenamientos |4 |3 |12 |No hay test que verifiquen las funciones |
+| Base de datos de ejercicios |3 |2 |6 |En el caso de que la base de datos personal se mantenga 3, si no pasaría ser 4 o 5 |
+| Plantillas de entrenamiento |1|3 |3 |es algo que afectaría mínimamente la experiencia de usuario. No hay testeo al respecto |
+| Panel de administración |5 |2 |10 |Sería un problema crítico |
+| Historial y estadísticas |2 |4 |8 |En el código no hay testeos y es probable que se generen fallos |
+| Interfaz responsive | 3| 3| 9|Sería algo corregible y un problema facil de notar |
 
 La columna del porqué es la única que se puede discutir: una justificación
 nombra un usuario y una consecuencia.
