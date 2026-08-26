@@ -30,7 +30,7 @@ def get_current_user(
         user_id: int = payload.get("sub")
     except (jwt.JWTError, ValidationError):
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
+            status_code=status.HTTP_403_FORBIDDEN, #Aquí hay un error de código: El error HTTP 403 no es adecuado
             detail="Could not validate credentials",
         )
     user_obj = user.get(db, id=user_id)

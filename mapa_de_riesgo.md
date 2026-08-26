@@ -1,8 +1,8 @@
 # Mapa de riesgo del proyecto
 
-**Grupo:** GXX
-**Integrantes:**
-**Fecha:**
+**Grupo:** G01
+**Integrantes:** Ignacio Soto, Leonardo Guerrero, Nicholas Garcia, Vicente Miranda
+**Fecha:** 26-08-2026
 
 Este archivo se completa en el taller de arqueología del proyecto (clase 3) y se
 retoma en la clase 15 y en la clase 17, cuando se arme el plan de pruebas. Se
@@ -15,13 +15,13 @@ Escala de la tercera columna: **directo** (apareció en la primera búsqueda),
 
 | # | Pregunta | Archivo y línea | ¿Cuánto costó? | Lo que llama la atención |
 |---|---|---|---|---|
-| 1 | ¿Dónde se verifica la contraseña al iniciar sesión? | | | |
-| 2 | ¿Cuánto dura un token de sesión antes de expirar? | | | |
+| 1 | ¿Dónde se verifica la contraseña al iniciar sesión? |app/core/security.py linea 24 |directo | |
+| 2 | ¿Cuánto dura un token de sesión antes de expirar? |app/core/config.py |directo |los 8 días se definen multiplicando las horas representadas como int |
 | 3 | ¿Dónde guarda el navegador el token, y qué hace la aplicación ante un `401`? | | | |
-| 4 | ¿Qué código HTTP devuelve la API si el token es inválido? ¿Y si es válido pero el usuario ya no existe? | | | |
-| 5 | ¿Dónde se decide si alguien es administrador? | | | |
-| 6 | ¿Qué endpoints se pueden llamar sin estar autenticado? | | | |
-| 7 | ¿Qué impide que dos personas modifiquen el mismo entrenamiento a la vez? | | | |
+| 4 | ¿Qué código HTTP devuelve la API si el token es inválido? ¿Y si es válido pero el usuario ya no existe? |app/api/endpoints/auth.py |medio |devuelve un HTTP_400_BAD_REQUEST en ambos casos. si el token es inválido: "Incorrect email or password" y si el usuario ya no existe: "Inactive user" |
+| 5 | ¿Dónde se decide si alguien es administrador? |app/api/endpoints/dependencies.py | medio alto| el status code 400 es erroneo, funciona pero el más adecuado es el ERROR403|
+| 6 | ¿Qué endpoints se pueden llamar sin estar autenticado? |app/api/endpoints/auth.py linea 16 |medio alto |se puede ingresar sin estar autenticado no entiendo por qué (checkar eso) |
+| 7 | ¿Qué impide que dos personas modifiquen el mismo entrenamiento a la vez? |app/api/endpoints/workouts.py  linea 120 |medio |Hace get a la base de datos *db*. Esta parte no está del todo en el código, sino que es algo que falta |
 
 "No lo encontramos" es un hallazgo válido: puede significar que no existe, y
 también que el sistema es difícil de analizar.
